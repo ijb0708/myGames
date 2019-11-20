@@ -1,4 +1,4 @@
-package main;
+package Main;
 
 import javax.swing.JFrame;
 
@@ -7,7 +7,7 @@ public class MainFrame extends JFrame{
 		
 		this.setContentPane(new GameEngine());
 		
-		this.setSize(500, 500);
+		this.setSize(1200+16, 600+38);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}

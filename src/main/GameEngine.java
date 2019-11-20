@@ -1,4 +1,4 @@
-package main;
+package Main;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,7 +12,7 @@ public class GameEngine extends JPanel implements Runnable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	public static final int GAMEWIDTH=600;
+	public static final int GAMEWIDTH=1200;
 	public static final int GAMEHEIGHT=600;
 
 	private Thread thread;
@@ -25,7 +25,7 @@ public class GameEngine extends JPanel implements Runnable{
 	
 	public GameEngine() {
 		
-		gm = GameManager.getInstance();
+		gm = new GameManager();
 		gm.setState(0);
 		
 		thread= new Thread(this);
@@ -79,7 +79,7 @@ public class GameEngine extends JPanel implements Runnable{
 			}
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(3);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

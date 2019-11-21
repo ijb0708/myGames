@@ -26,7 +26,7 @@ public class GameEngine extends JPanel implements Runnable{
 	public GameEngine() {
 		
 		gm = new GameManager();
-		gm.setState(0);
+		gm.setPage(0);
 		
 		thread= new Thread(this);
 		thread.start();

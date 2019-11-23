@@ -6,15 +6,27 @@ public class Animation {
 	private ImageLoader il = ImageLoader.getInstance();
 	private double startTime;
 	private boolean isOnce;
-	private Timer t;
+	private int curFrame;
+	private double delay;
+	private BufferedImage frameO[];
+	private BufferedImage frameT[][];
+	private GameTimer t;
 	
 	public Animation() {
 		isOnce=true;
-		t= new Timer();
+		t= new GameTimer();
 	}
 	
 	public void setDelay(double delay) {
 		t.setDelay(delay);
+	}
+	
+	public void setFrames (BufferedImage frame[]) {
+		
+	}
+	
+	public void setFrames (BufferedImage frame[][], int p) {
+		
 	}
 	
 	public BufferedImage getTankRight(int p) {

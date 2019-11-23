@@ -51,30 +51,12 @@ public class SinglePage extends PageAdapter{
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		switch(e.getKeyCode()) {
-		case KeyEvent.VK_RIGHT :
-			om.getTank(1).right();
-			break;
-		case KeyEvent.VK_LEFT :
-			om.getTank(1).left();
-			break;
-		case KeyEvent.VK_Z:
-			om.getTank(1).jump();
-			break;
-		}
+		om.getTank(1).pressKey(e);
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
-		switch(e.getKeyCode()) {
-		case KeyEvent.VK_RIGHT :
-			om.getTank(1).notRight();
-			break;
-		case KeyEvent.VK_LEFT :
-			om.getTank(1).notLeft();
-			break;
-		}
+		om.getTank(1).releasKey(e);
 	}
 
 	@Override

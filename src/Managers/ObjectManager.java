@@ -17,9 +17,9 @@ public class ObjectManager {
 	}
 	
 	//본코드
-	private ArrayList<Enemy> enemies = new ArrayList();
-	private ArrayList<BasicFloor> floors = new ArrayList();
-	private ArrayList<Tank> tanks = new ArrayList();
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	private ArrayList<BasicFloor> floors = new ArrayList<BasicFloor>();
+	private ArrayList<Tank> tanks = new ArrayList<Tank>();
 	
 	private ObjectManager() {
 		
@@ -70,33 +70,57 @@ public class ObjectManager {
 	}
 	//obj.getLine(GameObject.BOT))&&f.getBlocked()==true
 	//추락하고 있는지 판정해주는 함수
-	public boolean checkfalling(GameObject obj) {
+	public boolean checkBottom(GameObject obj) {
 		for(BasicFloor f : floors) {
-			if(f.getBox().intersectsLine(obj.getLine(GameObject.BOT))&&f.getBlocked()==true) {
+			if(f.getBox().intersects(obj.getBoxs(GameObject.BOT))&&f.getBlocked()==true
+					&&f.getBox().intersects(obj.getBoxs(GameObject.CENTER))) {
 				return true;
 			}
+			
 		}
 		return false;
 	}
-	
-	//추락시 양옆으로 충돌판정
+
+	public boolean checkTop(GameObject obj) {
+		for(BasicFloor f : floors) {
+			if(f.getBox().intersects(obj.getBoxs(GameObject.TOP))&&f.getBlocked()==true
+					&&f.getBox().intersects(obj.getBoxs(GameObject.CENTER))) {
+				return true;
+			}
+			
+		}
+		return false;
+	}
+
 	public boolean checkRight(GameObject obj) {
 		for(BasicFloor f : floors) {
-			if(f.getBox().intersectsLine(obj.getLine(GameObject.RIGHT))&&f.getBlocked()==true) {
+			if(f.getBox().intersects(obj.getBoxs(GameObject.RIGHT))&&f.getBlocked()==true
+					&&f.getBox().intersects(obj.getBoxs(GameObject.CENTER))) {
 				return true;
 			}
+			
 		}
 		return false;
 	}
 	
-	//평시 양옆으로 충동판정
+	
 	public boolean checkLeft(GameObject obj) {
 		for(BasicFloor f : floors) {
-			if(f.getBox().intersectsLine(obj.getLine(GameObject.LEFT))&&f.getBlocked()==true) {
+			if(f.getBox().intersects(obj.getBoxs(GameObject.LEFT))&&f.getBlocked()==true
+					&&f.getBox().intersects(obj.getBoxs(GameObject.CENTER))) {
+				return true;
+			}
+			
+		}
+		return false;
+	}
+	
+	public boolean checkBaseLine(GameObject obj) {
+		for(BasicFloor f : floors) {
+			if(f.getBox().intersectsLine(obj.getBaseLine())) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
 }

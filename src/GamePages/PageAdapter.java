@@ -8,7 +8,7 @@ import Managers.GameManager;
 public abstract class PageAdapter {
 	
 	public static final int GAME_WIDTH=1200;
-	public static final int GAME_HEIGHT=600;
+	public static final int GAME_HEIGHT=800;
 	
 	public abstract void draw(Graphics2D g2d);
 	public abstract void init();

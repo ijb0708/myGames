@@ -77,15 +77,15 @@ public class GameEngine extends JPanel implements Runnable{
 				updateCnt++;
 				delta-=oneSecond;
 			}
+			this.draw();
+			this.repaint();
 			
 			try {
-				Thread.sleep(3);
+				Thread.sleep(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			this.draw();
-			this.repaint();
 			//draw, render 그리는부분
 			FPSCnt++;
 			

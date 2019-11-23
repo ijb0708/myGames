@@ -1,6 +1,6 @@
 package Managers;
 
-public class Timer {
+public class GameTimer {
 	private double startTime;
 	private double delay;
 	

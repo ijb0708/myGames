@@ -20,13 +20,13 @@ public class MapMaker {
 { T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 1
 { T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 2
 { T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 3
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 4
-{ T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 10
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 4
+{ T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
+{ T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 10
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
 { T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
 	};

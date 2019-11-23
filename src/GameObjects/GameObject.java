@@ -2,24 +2,30 @@ package GameObjects;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
+import GamePages.PageAdapter;
+import Managers.GameTimer;
 import Managers.ImageLoader;
 import Managers.ObjectManager;
 
 public class GameObject {
 
-	public static final int TOP = 0, RIGHT = 1, BOT = 2, LEFT = 3;
-
+	public static final int CENTER=0, TOP = 1, RIGHT = 2, BOT = 3, LEFT = 4;
+	protected final double BOXTERM = 20;
 	protected ImageLoader il = ImageLoader.getInstance();
 	protected ObjectManager om = ObjectManager.getInstance();
 
-	protected Line2D[] Line = new Line2D[4];
-	protected Rectangle2D box;
+	protected GameTimer gt;
 
+	protected Rectangle2D[] boxs = new Rectangle2D[5];
+	protected Rectangle2D hitBox;
+	protected Line2D baseLine;
+
+	protected int base;
 	protected double mapX, mapY;
 	protected double fallingSpeed;
+	
 	protected int dx, dy;
 	protected int width, height;
 	protected boolean isRight, isLeft, isMoving, isFalling;
@@ -34,14 +40,17 @@ public class GameObject {
 		this.height = height;
 		this.fallingSpeed=2.5;
 		this.isRside=true;
+		
+		gt = new GameTimer();
 
 		//위 아래 왼쪽 오른쪽
-		Line[TOP] = new Line2D.Double(mapX, mapY, mapX + (double) width, mapY);
-		Line[BOT] = new Line2D.Double(mapX, mapY + (double) height, mapX + (double) width, mapY + (double) height);
-		Line[LEFT] = new Line2D.Double(mapX, mapY, mapX, mapY + (double) height - 100);
-		Line[RIGHT] = new Line2D.Double(mapX + (double) width, mapY, mapX + (double) width, mapY+ (double) height - 100);
+		boxs[TOP] = new Rectangle2D.Double(mapX, mapY - BOXTERM, (double) width, (double) BOXTERM);
+		boxs[BOT] = new Rectangle2D.Double(mapX, mapY + height, (double) width, (double) BOXTERM); 
+		boxs[LEFT] = new Rectangle2D.Double(mapX - BOXTERM, mapY, (double) BOXTERM, (double) height-2); 
+		boxs[RIGHT] = new Rectangle2D.Double(mapX + width, mapY, (double) BOXTERM, (double) height-2); 
+		boxs[CENTER] = new Rectangle2D.Double(mapX-1, mapY-1, (double) width+1, (double) height+1); 
 		
-		box = new Rectangle2D.Double(mapX, mapY, (double) width, (double) height);
+		baseLine = new Line2D.Double(mapX, mapY, mapX + width, mapY);
 		
 		isRight=isLeft=isMoving=isFalling=false;
 		
@@ -53,38 +62,36 @@ public class GameObject {
 
 	public void update() {
 	}
-	
-	protected void falling() {
-		
-		if(om.checkfalling(this) ) {
-			isFalling=false;
-		}else {
-			isFalling=true;
-		}
-		
-		if(isFalling) {
-			mapY+=fallingSpeed;
-		}
-	}
 
-	protected void updateLine() {
-		Line[TOP].setLine(mapX, mapY, mapX + (double) width, mapY);
-		Line[BOT].setLine(mapX, mapY + (double) height, mapX + (double) width, mapY + (double) height);
-		Line[LEFT].setLine(mapX, mapY, mapX, mapY + (double) height - 2);
-		Line[RIGHT].setLine(mapX + (double) width, mapY, mapX + (double) width, mapY+ (double) height - 2);
+	protected void updateBoxs() {
+		boxs[TOP].setRect(mapX + 3, mapY - BOXTERM, (double) width - 6, (double) BOXTERM);
+		boxs[BOT].setRect(mapX + 3, mapY + height, (double) width - 6, (double) BOXTERM);
+		boxs[LEFT].setRect(mapX - BOXTERM, mapY + 3, (double) BOXTERM, (double) height - 6);
+		boxs[RIGHT].setRect(mapX + width, mapY + 3, (double) BOXTERM, (double) height - 6);
+		boxs[CENTER].setRect(mapX, mapY, (double) width, (double) height);
+		
+		for (double i= 0; i<PageAdapter.GAME_HEIGHT; i++) {
+				baseLine.setLine(mapX + 3, mapY + height + i, mapX + width - 3, mapY + height + i);
+			if(om.checkBaseLine(this)) {
+				base=(int) (mapY + i);
+				break;
+			}
+		}
 	}
 	
-	protected void updateRect() {
-		box.setRect(mapX, mapY, (double) width, (double) height);
+	protected void updatehitBox() {
 		
 	}
 	
-	public Line2D getLine(int dir) {
-		return Line[dir];
+	public Rectangle2D getBoxs(int dir) {
+		return boxs[dir];
+	}
+	
+	public Line2D getBaseLine() {
+		return baseLine;
 	}
 
 	protected boolean checkTile() {
 		return true;
 	}
-	
 }

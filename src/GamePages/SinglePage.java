@@ -20,11 +20,8 @@ public class SinglePage extends PageAdapter{
 	private GameManager gm;
 	private MapMaker mm;
 	
-	private Tank tank;
-	
 	public SinglePage(GameManager gm) {
 		this.gm=gm;
-		tank = new Tank(50, 50, 0);
 		
 		mm = new MapMaker(0);
 		mm.make();

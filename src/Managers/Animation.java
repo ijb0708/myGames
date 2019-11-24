@@ -3,44 +3,58 @@ package Managers;
 import java.awt.image.BufferedImage;
 
 public class Animation {
-	private ImageLoader il = ImageLoader.getInstance();
-	private double startTime;
-	private boolean isOnce;
+	public boolean isOnce;
+	private boolean isRun;
+	private boolean isFirst;
+	
+	private BufferedImage[] frames;
+	
 	private int curFrame;
+	
+	private double startTime;
 	private double delay;
-	private BufferedImage frameO[];
-	private BufferedImage frameT[][];
-	private GameTimer t;
 	
-	public Animation() {
-		isOnce=true;
-		t= new GameTimer();
+	public Animation(BufferedImage[] frames, double delay) {
+		this.frames=frames;
+		this.delay=delay;
+		isFirst=true;
+		curFrame=0;
 	}
 	
-	public void setDelay(double delay) {
-		t.setDelay(delay);
-	}
-	
-	public void setFrames (BufferedImage frame[]) {
+	public Animation(BufferedImage[][] frames, int player, double delay) {
+		for (int i=0; i<frames[player].length; i++) {
+			this.frames[i] = frames[player][i];
+		}
 		
+		this.delay=delay;
+		isFirst=true;
+		curFrame=0;
 	}
 	
-	public void setFrames (BufferedImage frame[][], int p) {
-		
+	public void start() {
+		if(isFirst) {
+			startTime = System.nanoTime();
+			isRun=true;
+			isFirst=false;
+		}
 	}
 	
-	public BufferedImage getTankRight(int p) {
-		return il.getBackground_black();
+	public void end() {
+		isRun=false;
+		isFirst=true;
 	}
 	
-	public BufferedImage getTankleft(int p) {
-		return il.getBackground_black();
-	}	
-	public BufferedImage getTankRightFire(int p) {
-		return il.getBackground_black();
-	}
-	
-	public BufferedImage getTankleftFire(int p) {
-		return il.getBackground_black();
+	public BufferedImage getFrame() {
+		if(isRun) {
+		double endTime = System.nanoTime();
+		if((endTime - startTime)>= delay) {
+			startTime = System.nanoTime();
+			curFrame++;
+		}
+		if(curFrame==frames.length) {
+			curFrame=0;
+		}
+		}
+		return frames[curFrame];
 	}
 }

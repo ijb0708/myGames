@@ -9,17 +9,17 @@ import javax.imageio.ImageIO;
 
 public class ImageLoader {
 	
-	BufferedImage protoTank;
+	private BufferedImage protoTank;
 	
-	BufferedImage tank[][] = new BufferedImage[1][2];
-	BufferedImage tankFire[][] = new BufferedImage[1][2];
+	private BufferedImage[] tank1 = new BufferedImage[2];
+	private BufferedImage[] tankFire1 = new BufferedImage[2];
 	
-	BufferedImage shell;
+	private BufferedImage shell;
 	
-	BufferedImage Bomb[] = new BufferedImage[3];
+	private BufferedImage[] Bomb = new BufferedImage[3];
 	
-	BufferedImage background[] = new BufferedImage[2];
-	BufferedImage floor[] = new BufferedImage[2];
+	private BufferedImage[] background = new BufferedImage[2];
+	private BufferedImage[] floor = new BufferedImage[2];
 
 	private static ImageLoader IL = new ImageLoader();
 
@@ -34,11 +34,11 @@ public class ImageLoader {
 			
 			protoTank = ImageIO.read(new File("Picture/character/actor1/tank.png"));
 			
-			tank[0][0] = ImageIO.read(new File("Picture/character/actor1/tank1.png"));
-			tank[0][1] = ImageIO.read(new File("Picture/character/actor1/tank2.png"));
+			tank1[0] = ImageIO.read(new File("Picture/character/actor1/tank1.png"));
+			tank1[1] = ImageIO.read(new File("Picture/character/actor1/tank2.png"));
 			
-			tankFire[0][0] = ImageIO.read(new File("Picture/character/actor1/tankShut1.png"));
-			tankFire[0][1] = ImageIO.read(new File("Picture/character/actor1/tankShut2.png"));
+			tankFire1[0] = ImageIO.read(new File("Picture/character/actor1/tankShut1.png"));
+			tankFire1[1] = ImageIO.read(new File("Picture/character/actor1/tankShut2.png"));
 			
 			shell = ImageIO.read(new File("Picture/character/actor1/tankShut2.png"));
 			
@@ -56,8 +56,12 @@ public class ImageLoader {
 		return background[1];
 	}
 	
-	public BufferedImage getTank(int p, int i) {
-		return tank[p][i];
+	public BufferedImage[] getTank1() {
+		return tank1;
+	}
+	
+	public BufferedImage getStopTank1(int delta) {
+		return tank1[delta];
 	}
 	
 	public BufferedImage getStone() {

@@ -24,16 +24,16 @@ public class MapMaker {
 { T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
 { T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 10
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N }, // 10
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
 { T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
 	};
 
-	private ArrayList<BasicFloor> floors = new ArrayList();
-	private ArrayList<Enemy> enemies = new ArrayList();
-	private ArrayList<Tank> tanks = new ArrayList();
+	private ArrayList<BasicFloor> floors = new ArrayList<BasicFloor>();
+	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+	private ArrayList<Tank> tanks = new ArrayList<Tank>();
 
 	public MapMaker(int select) {
 		if (select == 0) {

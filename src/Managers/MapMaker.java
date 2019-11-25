@@ -24,9 +24,9 @@ public class MapMaker {
 { T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
 { T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N }, // 10
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N }, // 10
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
 { T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
 	};

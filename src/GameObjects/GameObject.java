@@ -26,7 +26,11 @@ public class GameObject {
 
 	// 계산시 사용되는 좌표
 	protected double mapX, mapY;
-	protected double fallingSpeed;
+
+	// 속도 관련 변수
+	protected double moveSpeed, fallSpeed, jumpSpeed;
+	protected double curJumpSpeed, maxJumpSpeed;
+	protected double curFallSpeed;
 	
 	//출력적인 부분에서 사용되어지는 주소
 	protected int base;
@@ -36,6 +40,8 @@ public class GameObject {
 	//움직이고 있는 방향의 여부
 	protected boolean isRight, isLeft, isMoving, isFalling;
 	protected boolean isRside;
+	
+	protected boolean isJumping, isPosJump;
 
 	public GameObject(int x, int y, int width, int height) {
 		this.dx = x;
@@ -44,7 +50,6 @@ public class GameObject {
 		this.mapY = y;
 		this.width = width;
 		this.height = height;
-		this.fallingSpeed=2.5;
 		this.isRside=true;
 
 		//위 아래 왼쪽 오른쪽
@@ -77,12 +82,101 @@ public class GameObject {
 		boxs[CENTER].setRect(mapX, mapY, (double) width, (double) height);
 		
 		for (double i= 0; i<PageAdapter.GAME_HEIGHT; i++) {
-				baseLine.setLine(mapX + 4, mapY + i, mapX + width - 4, mapY + i);
+				baseLine.setLine(mapX + 3, boxs[CENTER].getCenterY() + i, mapX + width - 6, boxs[CENTER].getCenterY() + i);
 			if(om.checkBaseLine(this)) {
-				base=(int) (mapY - height + i);
+				base=(int) (boxs[CENTER].getCenterY()  + i);
 				break;
 			}
 		}
+	}
+
+	// 내부처리함수
+	protected void updateMoving() {
+		if (isMoving) {
+			if (isRside) {
+				if (!om.checkRight(this)) {
+					mapX += moveSpeed;
+				}
+			} else {
+				if (!om.checkLeft(this)) {
+					mapX -= moveSpeed;
+				}
+			}
+		}
+	}
+
+	protected void updateFalling() {
+
+		if (!om.checkBottom(this) && !isJumping) {
+			mapY += curFallSpeed;
+			curFallSpeed += fallSpeed;
+
+			isFalling = true;
+		} else {
+			curFallSpeed = fallSpeed;
+			isFalling = false;
+			isPosJump = true;
+		}
+
+		if (mapY + height > base) {
+			mapY = base - height + 1;
+		}
+	}
+
+	protected void updateJumping() {
+
+		if (isJumping) {
+			mapY -= curJumpSpeed;
+			curJumpSpeed -= jumpSpeed;
+			isPosJump = false;
+
+			if (curJumpSpeed <= 0 || om.checkTop(this)) {
+				curJumpSpeed = maxJumpSpeed;
+				isJumping = false;
+			}
+
+		}
+	}
+
+	protected void jump() {
+		if (isPosJump) {
+			isJumping = true;
+		}
+	}
+
+	protected void right() {
+		isMoving = true;
+		isRight = true;
+		isRside = true;
+	}
+
+	protected void left() {
+		isMoving = true;
+		isLeft = true;
+		isRside = false;
+	}
+
+	protected void notRight() {
+		isRight = false;
+		if (!isLeft) {
+			isMoving = false;
+		} else {
+			isRside = false;
+		}
+	}
+
+	protected void notLeft() {
+		isLeft = false;
+		if (!isRight) {
+			isMoving = false;
+		} else {
+			isRside = true;
+		}
+	}
+	
+	protected void correctLocation () {
+		dx = (int) mapX;
+		dy = (int) mapY;
 	}
 	
 	// getter, setter

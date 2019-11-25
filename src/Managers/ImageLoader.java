@@ -40,7 +40,7 @@ public class ImageLoader {
 			tankFire1[0] = ImageIO.read(new File("Picture/character/actor1/tankShut1.png"));
 			tankFire1[1] = ImageIO.read(new File("Picture/character/actor1/tankShut2.png"));
 			
-			shell = ImageIO.read(new File("Picture/character/actor1/tankShut2.png"));
+			shell = ImageIO.read(new File("Picture/bullets/bullet.png"));
 			
 			floor[0] = ImageIO.read(new File("Picture/floor/Stone.png"));
 		} catch (IOException e) {
@@ -60,11 +60,15 @@ public class ImageLoader {
 		return tank1;
 	}
 	
-	public BufferedImage getStopTank1(int delta) {
-		return tank1[delta];
+	public BufferedImage getProtoTank(int delta) {
+		return protoTank;
 	}
 	
 	public BufferedImage getStone() {
 		return floor[0];
+	}
+	
+	public BufferedImage getShell() {
+		return shell;
 	}
 }

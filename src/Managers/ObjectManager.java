@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 
 import Floors.BasicFloor;
+import GameObjects.Bullet;
 import GameObjects.Enemy;
 import GameObjects.GameObject;
 import GameObjects.Tank;
@@ -20,12 +21,13 @@ public class ObjectManager {
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<BasicFloor> floors = new ArrayList<BasicFloor>();
 	private ArrayList<Tank> tanks = new ArrayList<Tank>();
+	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	
 	private ObjectManager() {
 		
 	}
 	
-	// 맵으로 부터 지형을 받는 메소드
+	// 맵으로 부터 지형을 받는 메소드  또는 받아주는 매소드
 	public void setFloors(ArrayList<BasicFloor> floors) {
 		this.floors.clear();
 		this.floors.addAll(floors);
@@ -41,6 +43,10 @@ public class ObjectManager {
 		this.enemies.addAll(enemies);
 	}
 	
+	public void addShell(Bullet obj) {
+		this.bullets.add(obj);
+	}
+	
 	
 	//탱크를 사용하기위한 불러오기 함수
 	public Tank getTank(int p) {
@@ -51,10 +57,6 @@ public class ObjectManager {
 		}
 		System.out.println("not tank");
 		return null;
-	}
-	
-	public void removeEnemy(int i) {
-		enemies.remove(i);
 	}
 	
 	public void draw(Graphics2D g2d) {
@@ -68,7 +70,22 @@ public class ObjectManager {
 			t.draw(g2d);
 		}
 	}
-	//obj.getLine(GameObject.BOT))&&f.getBlocked()==true
+	
+	//제거 매소드
+	public void removeFloors(BasicFloor obj) {
+		floors.remove(obj);
+	}
+	
+	public void removeEnemy(Enemy obj) {
+		enemies.remove(obj);
+	}
+	
+	public void removeTank(Tank obj) {
+		tanks.remove(obj);
+	}
+	
+	
+	//외부 처리 메소드
 	//추락하고 있는지 판정해주는 함수
 	public boolean checkBottom(GameObject obj) {
 		for(BasicFloor f : floors) {

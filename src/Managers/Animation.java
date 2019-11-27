@@ -5,8 +5,11 @@ import java.awt.image.BufferedImage;
 
 public class Animation {
 	public boolean isOnce;
-	private boolean isRun;
 	private boolean isFirst;
+	
+	public boolean isRun;
+	public boolean isFinish;
+	public boolean isStart;
 
 	private BufferedImage[] frames;
 
@@ -19,6 +22,8 @@ public class Animation {
 		this.frames = frames;
 		this.delay = delay;
 		this.isOnce = isOnce;
+		isStart=false;
+		isFinish=false;
 		isFirst = true;
 		curFrame = 0;
 	}
@@ -37,6 +42,8 @@ public class Animation {
 	public void start() {
 		if (isFirst) {
 			startTime = System.nanoTime();
+			isStart=true;
+			isFinish=false;
 			isRun = true;
 			isFirst = false;
 		}
@@ -58,6 +65,7 @@ public class Animation {
 			if (curFrame == frames.length) {
 				curFrame = 0;
 				if (isOnce) {
+					isFinish=true;
 					isRun = false;
 				}
 			}

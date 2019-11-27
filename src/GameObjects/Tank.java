@@ -16,9 +16,6 @@ public class Tank extends GameObject {
 	// 추가적인 상태를 위한 변수
 	private boolean isFire;
 
-	// 애니메이션 속도 관련 변수
-	private double moveDelta;
-
 	// 플레이어 변수(더미)
 	private int player;
 	
@@ -36,30 +33,32 @@ public class Tank extends GameObject {
 		super(x, y, TANK_SIZE, TANK_SIZE);
 		this.player = p;
 		isMoving = false;
-		isFire = true;
+		isFire = false;
 		moveSpeed = 2.5;
 		fallSpeed = 0.2;
 		jumpSpeed = 0.2;
 		curJumpSpeed = maxJumpSpeed = 6.5;
 		curFallSpeed = 0.2;
-		moveDelta = 120000000;
+		
+		double attackDelay = 800000000;
 		
 		curHealth = maxHealth = 500;
 		
 		
 		gt = new GameTimer();
-		gt.setDelay(800000000);
+		gt.setDelay(attackDelay);
 		
 		hitBox = new Rectangle2D.Double(mapX + 3, mapY + 3, width - 6, height - 6);
 
-		move = new Animation(il.getTank1(), moveDelta, false);
+		move = new Animation(il.getTank1(), 120000000, false);
+	//	fire = new Animation(il.getTankFire1(), 150000000, true);
 	}
 
 	@Override
 	public void update() {
 
-//		if (!isFire) {
-//			
+//		if (isFire) {
+//			fire.start();
 //		} else {
 		if (isMoving) {
 			move.start();
@@ -67,21 +66,21 @@ public class Tank extends GameObject {
 			move.end();
 		}
 //		}
+		updateHitBox();
+		updateBoxs();
 
 		updateMoving();
 		updateFalling();
 		updateJumping();
 
-		updateHitBox();
-		updateBoxs();
 		correctLocation();
 	}
 
 	@Override
 	public void draw(Graphics2D g2d) {
 
-//		if() {
-//			
+//		if(fire.isRun) {
+//			g2d.drawImage(fire.getFrame(), dx, dy, width, height, null);
 //		}else {
 		if (isRside) {
 			g2d.drawImage(move.getFrame(), dx, dy, width, height, null);
@@ -137,9 +136,13 @@ public class Tank extends GameObject {
 	public int getPlayer() {
 		return player;
 	}
+	public int getCurHealth() {
+		return curHealth;
+	}
 
 	private void shoot() {
 
+		isFire=true;
 		if (gt.check()) {
 			if (isRside) {
 				om.addBullet(new Bullet((int) mapX + (width - 10), (int) mapY + (height / 12), Bullet.RIGHT, player));

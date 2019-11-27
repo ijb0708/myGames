@@ -1,7 +1,5 @@
 package GameObjects;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import GamePages.PageAdapter;
@@ -36,9 +34,9 @@ public class Bullet extends GameObject {
 			break;
 		}
 
-		updateCrash();
 		updateMoving();
 		updateBoxs();
+		updateCrash();
 		correctLocation();
 	}
 
@@ -48,12 +46,22 @@ public class Bullet extends GameObject {
 	}
 
 	private void updateCrash() {
+		if(om.checkCenterToEnemy(this)) {
+			isDead = true;
+		}
+		if(om.checkCenterToTank(this)) {
+			isDead = true;
+		}
 		if (om.checkCenter(this)) {
 			isDead = true;
-		}else if(mapX>PageAdapter.GAME_WIDTH||mapY>PageAdapter.GAME_HEIGHT
+		}
+		if(mapX>PageAdapter.GAME_WIDTH||mapY>PageAdapter.GAME_HEIGHT
 				||mapX<0||mapY<0) {
 			isDead = true;
-			System.out.println("Áö¿öÁü");
 		}
+	}
+	
+	public int getPlayer() {
+		return player;
 	}
 }

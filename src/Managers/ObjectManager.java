@@ -76,34 +76,18 @@ public class ObjectManager {
 	}
 
 	public void update() {
+		for (Bullet b : bullets) {
+			b.update();
+		}
 		for (Enemy o : enemies) {
 			o.update();
 		}
 		for (Tank t : tanks) {
 			t.update();
 		}
-		for (Bullet b : bullets) {
-			b.update();
-		}
 	}
 
 	public void removeObject() {
-//		for (Enemy o : enemies) {
-//			if(o.isDead) {
-//				enemies.remove(o);
-//			}
-//		}
-//		for (Tank t : tanks) {
-//			if(t.isDead) {
-//				tanks.remove(t);
-//			}
-//		}
-//		for (Bullet b : bullets) {
-//			if(b.isDead) {
-//				bullets.remove(b);
-//			}
-//		}
-		
 		
 		Iterator<Bullet> iterB = bullets.iterator();
 		Iterator<Tank> iterT = tanks.iterator();
@@ -199,4 +183,41 @@ public class ObjectManager {
 		}
 		return false;
 	}
+
+	public boolean checkCenterToEnemy(Bullet obj) {
+		for (Enemy e : enemies) {
+			if (e.getHitBox().intersects(obj.getBoxs(GameObject.CENTER))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean checkCenterToTank(Bullet obj) {
+		for (Tank t : tanks) {
+			if (t.getHitBox().intersects(obj.getBoxs(GameObject.CENTER))&&!(t.getPlayer()==obj.getPlayer())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean checkHitEnemy(Enemy obj) {
+		for (Bullet b : bullets) {
+			if (b.getBoxs(GameObject.CENTER).intersects(obj.getHitBox())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean checkHitTank(Tank obj) {
+		for (Enemy e : enemies) {
+			if(e.getHitBox().intersects(obj.getHitBox())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }

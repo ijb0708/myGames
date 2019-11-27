@@ -20,6 +20,8 @@ public class ImageLoader {
 	
 	private BufferedImage[] background = new BufferedImage[2];
 	private BufferedImage[] floor = new BufferedImage[2];
+	
+	private BufferedImage enemy;
 
 	private static ImageLoader IL = new ImageLoader();
 
@@ -46,6 +48,8 @@ public class ImageLoader {
 			Bomb[1] = ImageIO.read(new File("Picture/effect/bomb2.png"));
 			Bomb[2] = ImageIO.read(new File("Picture/effect/bomb3.png"));
 			
+			enemy = ImageIO.read(new File("Picture/character/monster/Enemy1.png"));
+			
 			floor[0] = ImageIO.read(new File("Picture/floor/Stone.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -64,6 +68,10 @@ public class ImageLoader {
 		return tank1;
 	}
 	
+	public BufferedImage[] getTankFire1() {
+		return tankFire1;
+	}
+	
 	public BufferedImage getProtoTank(int delta) {
 		return protoTank;
 	}
@@ -78,5 +86,9 @@ public class ImageLoader {
 	
 	public BufferedImage getBullet() {
 		return bullet;
+	}
+	
+	public BufferedImage getEnemy() {
+		return enemy;
 	}
 }

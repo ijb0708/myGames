@@ -54,6 +54,7 @@ public class GameObject {
 		this.width = width;
 		this.height = height;
 		this.isRside=true;
+		this.isDead=false;
 
 		//위 아래 왼쪽 오른쪽
 		boxs[TOP] = new Rectangle2D.Double(mapX + 3, mapY - BOXTERM, (double) width - 6, (double) BOXTERM);
@@ -64,7 +65,7 @@ public class GameObject {
 		
 		baseLine = new Line2D.Double(mapX, mapY, mapX + width, mapY);
 		
-		isRight=isLeft=isMoving=isFalling=false;
+		isRight=isLeft=isMoving=isFalling=isJumping=isPosJump=false;
 		
 	}
 	
@@ -185,6 +186,10 @@ public class GameObject {
 	// getter, setter
 	public Rectangle2D getBoxs(int dir) {
 		return boxs[dir];
+	}
+	
+	public Rectangle2D getHitBox() {
+		return hitBox;
 	}
 	
 	public Line2D getBaseLine() {

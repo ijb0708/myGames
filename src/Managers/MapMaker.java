@@ -23,11 +23,11 @@ public class MapMaker {
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 4
 { T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
-{ T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
 { T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N }, // 10
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
+{ T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
 { T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
 	};
 
@@ -62,6 +62,9 @@ public class MapMaker {
 				switch (use[i][j]) {
 				case S:
 					floors.add(new Stone(j * BasicFloor.SIZE, i * BasicFloor.SIZE));
+					break;
+				case E:
+					enemies.add(new Enemy(j * BasicFloor.SIZE, i * BasicFloor.SIZE));
 					break;
 				case T1:
 					tanks.add(new Tank(j * BasicFloor.SIZE, i * BasicFloor.SIZE, 1));
@@ -99,5 +102,5 @@ public class MapMaker {
 
 // NÀº NONE , S´Â  Stone, T1´Â tank1, 
 enum T {
-	N, S, T1, T2, T3, T4;
+	N, S, E, T1, T2, T3, T4;
 }

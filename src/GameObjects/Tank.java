@@ -41,7 +41,7 @@ public class Tank extends GameObject {
 		
 		hitBox = new Rectangle2D.Double(mapX +3, mapY + 3, width - 6, height - 6);
 
-		move = new Animation(il.getTank1(), moveDelta);
+		move = new Animation(il.getTank1(), moveDelta, false);
 	}
 
 	@Override
@@ -57,11 +57,11 @@ public class Tank extends GameObject {
 			}
 //		}
 		
-		updateHitBox();
 		updateMoving();
 		updateFalling();
 		updateJumping();
-
+		
+		updateHitBox();
 		updateBoxs();
 		correctLocation ();
 	}
@@ -102,6 +102,9 @@ public class Tank extends GameObject {
 		case KeyEvent.VK_Z:
 			jump();
 			break;
+		case KeyEvent.VK_X:
+			shoot();
+			break;
 		}
 	}
 
@@ -114,6 +117,8 @@ public class Tank extends GameObject {
 		case KeyEvent.VK_LEFT:
 			notLeft();
 			break;
+		case KeyEvent.VK_X:
+			break;
 		}
 
 	}
@@ -121,6 +126,14 @@ public class Tank extends GameObject {
 	// getter&setter
 	public int getPlayer() {
 		return player;
+	}
+	
+	private void shoot() {
+		if(isRside) {
+			om.addBullet(new Bullet((int) hitBox.getCenterX(), (int) hitBox.getCenterY(), Bullet.RIGHT, player));
+		}else {
+			om.addBullet(new Bullet((int) hitBox.getCenterX(), (int) hitBox.getCenterY(), Bullet.LEFT, player));
+		}
 	}
 	
 	private void updateHitBox() {

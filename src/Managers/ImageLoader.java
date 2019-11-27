@@ -14,7 +14,7 @@ public class ImageLoader {
 	private BufferedImage[] tank1 = new BufferedImage[2];
 	private BufferedImage[] tankFire1 = new BufferedImage[2];
 	
-	private BufferedImage shell;
+	private BufferedImage bullet;
 	
 	private BufferedImage[] Bomb = new BufferedImage[3];
 	
@@ -40,7 +40,11 @@ public class ImageLoader {
 			tankFire1[0] = ImageIO.read(new File("Picture/character/actor1/tankShut1.png"));
 			tankFire1[1] = ImageIO.read(new File("Picture/character/actor1/tankShut2.png"));
 			
-			shell = ImageIO.read(new File("Picture/bullets/bullet.png"));
+			bullet = ImageIO.read(new File("Picture/bullets/bullet.png"));
+			
+			Bomb[0] = ImageIO.read(new File("Picture/effect/bomb1.png"));
+			Bomb[1] = ImageIO.read(new File("Picture/effect/bomb2.png"));
+			Bomb[2] = ImageIO.read(new File("Picture/effect/bomb3.png"));
 			
 			floor[0] = ImageIO.read(new File("Picture/floor/Stone.png"));
 		} catch (IOException e) {
@@ -68,7 +72,11 @@ public class ImageLoader {
 		return floor[0];
 	}
 	
-	public BufferedImage getShell() {
-		return shell;
+	public BufferedImage[] getBomb() {
+		return Bomb;
+	}
+	
+	public BufferedImage getBullet() {
+		return bullet;
 	}
 }

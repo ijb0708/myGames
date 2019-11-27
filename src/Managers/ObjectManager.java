@@ -23,6 +23,8 @@ public class ObjectManager {
 	private ArrayList<Tank> tanks = new ArrayList<Tank>();
 	private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 	
+	private ArrayList<GameObject> removes = new ArrayList<GameObject>();
+	
 	private ObjectManager() {
 		
 	}
@@ -43,7 +45,7 @@ public class ObjectManager {
 		this.enemies.addAll(enemies);
 	}
 	
-	public void addShell(Bullet obj) {
+	public void addBullet(Bullet obj) {
 		this.bullets.add(obj);
 	}
 	
@@ -63,6 +65,9 @@ public class ObjectManager {
 		for (Enemy o : enemies) {
 			o.draw(g2d);
 		}
+		for (Bullet b : bullets) {
+			b.draw(g2d);
+		}
 		for (BasicFloor f : floors) {
 			f.draw(g2d);
 		}
@@ -71,9 +76,43 @@ public class ObjectManager {
 		}
 	}
 	
+	public void update() {
+		for (Enemy o : enemies) {
+			o.update();
+		}
+		for (Tank t : tanks) {
+			t.update();
+		}
+		for (Bullet b : bullets) {
+			b.update();
+		}
+		removesAll();
+	}
+	
+	public void addRemoves(GameObject obj) {
+		try {
+			removes.add(obj);
+		}catch(Exception e) {
+			e.fillInStackTrace();
+		}
+	}
+	
+	public void removesAll() {
+		try {
+			bullets.removeAll(removes);
+			removes.clear();
+		}catch(Exception e) {
+			e.fillInStackTrace();
+		}
+	}
+	
 	//제거 매소드
 	public void removeFloors(BasicFloor obj) {
 		floors.remove(obj);
+	}
+	
+	public void removeFloors(int i) {
+		floors.remove(i);
 	}
 	
 	public void removeEnemy(Enemy obj) {
@@ -84,6 +123,20 @@ public class ObjectManager {
 		tanks.remove(obj);
 	}
 	
+	public void removeBullet(Bullet obj) {
+		bullets.remove(obj);
+	}
+	
+	public void removeBullet(int i) {
+		bullets.remove(i);
+	}
+	
+	public void removeAll() {
+		tanks.clear();
+		enemies.clear();
+		floors.clear();
+		bullets.clear();
+	}
 	
 	//외부 처리 메소드
 	//추락하고 있는지 판정해주는 함수
@@ -135,6 +188,15 @@ public class ObjectManager {
 	public boolean checkBaseLine(GameObject obj) {
 		for(BasicFloor f : floors) {
 			if(f.getBox().intersectsLine(obj.getBaseLine())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean checkCenter(GameObject obj) {
+		for (BasicFloor f : floors) {
+			if(f.getBox().intersects(obj.getBoxs(GameObject.CENTER))&&f.getBlocked()==true) {
 				return true;
 			}
 		}

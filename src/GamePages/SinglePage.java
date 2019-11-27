@@ -43,7 +43,7 @@ public class SinglePage extends PageAdapter{
 
 	@Override
 	public void update() {
-		om.getTank(1).update();
+		om.update();
 	}
 
 	@Override

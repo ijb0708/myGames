@@ -1,12 +1,12 @@
 package GameObjects;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import Managers.Animation;
+import Managers.GameTimer;
 
 public class Tank extends GameObject {
 
@@ -22,7 +22,12 @@ public class Tank extends GameObject {
 	// 플레이어 변수(더미)
 	private int player;
 	
+	private int maxHealth;
+	private int curHealth;
+
 	private BufferedImage sprite;
+
+	private GameTimer gt;
 
 	private Animation move;
 	private Animation fire;
@@ -31,15 +36,21 @@ public class Tank extends GameObject {
 		super(x, y, TANK_SIZE, TANK_SIZE);
 		this.player = p;
 		isMoving = false;
-		isFire=true;
+		isFire = true;
 		moveSpeed = 2.5;
-		fallSpeed=0.2;
-		jumpSpeed=0.2;
+		fallSpeed = 0.2;
+		jumpSpeed = 0.2;
 		curJumpSpeed = maxJumpSpeed = 6.5;
 		curFallSpeed = 0.2;
 		moveDelta = 120000000;
 		
-		hitBox = new Rectangle2D.Double(mapX +3, mapY + 3, width - 6, height - 6);
+		curHealth = maxHealth = 500;
+		
+		
+		gt = new GameTimer();
+		gt.setDelay(800000000);
+		
+		hitBox = new Rectangle2D.Double(mapX + 3, mapY + 3, width - 6, height - 6);
 
 		move = new Animation(il.getTank1(), moveDelta, false);
 	}
@@ -50,20 +61,20 @@ public class Tank extends GameObject {
 //		if (!isFire) {
 //			
 //		} else {
-			if (isMoving) {
-				move.start();
-			} else {
-				move.end();
-			}
+		if (isMoving) {
+			move.start();
+		} else {
+			move.end();
+		}
 //		}
-		
+
 		updateMoving();
 		updateFalling();
 		updateJumping();
-		
+
 		updateHitBox();
 		updateBoxs();
-		correctLocation ();
+		correctLocation();
 	}
 
 	@Override
@@ -79,14 +90,13 @@ public class Tank extends GameObject {
 		}
 //		}
 
-		g2d.setColor(Color.red);
-		for (int i = 0; i < 5; i++) {
-			g2d.draw(boxs[i]);
-		}
-		g2d.draw(hitBox);
-		
-		g2d.setColor(Color.blue);
-		g2d.draw(baseLine);
+//		g2d.setColor(Color.red);
+//		for (int i = 0; i < 5; i++) {
+//			g2d.draw(boxs[i]);
+//		}
+//		g2d.draw(hitBox);
+//		
+//		g2d.draw(baseLine);
 
 	}
 
@@ -127,16 +137,20 @@ public class Tank extends GameObject {
 	public int getPlayer() {
 		return player;
 	}
-	
+
 	private void shoot() {
-		if(isRside) {
-			om.addBullet(new Bullet((int) hitBox.getCenterX(), (int) hitBox.getCenterY(), Bullet.RIGHT, player));
-		}else {
-			om.addBullet(new Bullet((int) hitBox.getCenterX(), (int) hitBox.getCenterY(), Bullet.LEFT, player));
+
+		if (gt.check()) {
+			if (isRside) {
+				om.addBullet(new Bullet((int) mapX + (width - 10), (int) mapY + (height / 12), Bullet.RIGHT, player));
+			} else {
+				om.addBullet(new Bullet((int) mapX + 10, (int) mapY + (height / 12), Bullet.LEFT, player));
+			}
+			gt.start();
 		}
 	}
-	
+
 	private void updateHitBox() {
-		hitBox.setRect(mapX +3, mapY + 2, width - 6, height - 4);
+		hitBox.setRect(mapX + 3, mapY + 2, width - 6, height - 4);
 	}
 }

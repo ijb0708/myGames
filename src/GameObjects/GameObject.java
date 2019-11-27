@@ -42,6 +42,9 @@ public class GameObject {
 	protected boolean isRside;
 	
 	protected boolean isJumping, isPosJump;
+	
+	//삭제여부
+	public boolean isDead=false;
 
 	public GameObject(int x, int y, int width, int height) {
 		this.dx = x;

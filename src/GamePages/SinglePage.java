@@ -44,6 +44,7 @@ public class SinglePage extends PageAdapter{
 	@Override
 	public void update() {
 		om.update();
+		om.removeObject();
 	}
 
 	@Override

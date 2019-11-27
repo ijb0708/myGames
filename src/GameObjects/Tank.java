@@ -18,7 +18,7 @@ public class Tank extends GameObject {
 
 	// 플레이어 변수(더미)
 	private int player;
-	
+
 	private int maxHealth;
 	private int curHealth;
 
@@ -28,6 +28,7 @@ public class Tank extends GameObject {
 
 	private Animation move;
 	private Animation fire;
+	private Animation bomb;
 
 	public Tank(int x, int y, int p) {
 		super(x, y, TANK_SIZE, TANK_SIZE);
@@ -39,19 +40,19 @@ public class Tank extends GameObject {
 		jumpSpeed = 0.2;
 		curJumpSpeed = maxJumpSpeed = 6.5;
 		curFallSpeed = 0.2;
-		
+
 		double attackDelay = 800000000;
-		
+
 		curHealth = maxHealth = 500;
-		
-		
+
 		gt = new GameTimer();
 		gt.setDelay(attackDelay);
-		
+
 		hitBox = new Rectangle2D.Double(mapX + 3, mapY + 3, width - 6, height - 6);
 
+		bomb = new Animation(il.getBomb(), 100000000, true);
 		move = new Animation(il.getTank1(), 120000000, false);
-	//	fire = new Animation(il.getTankFire1(), 150000000, true);
+		// fire = new Animation(il.getTankFire1(), 150000000, true);
 	}
 
 	@Override
@@ -66,6 +67,9 @@ public class Tank extends GameObject {
 			move.end();
 		}
 //		}
+
+		checkHitTank();
+
 		updateHitBox();
 		updateBoxs();
 
@@ -82,10 +86,14 @@ public class Tank extends GameObject {
 //		if(fire.isRun) {
 //			g2d.drawImage(fire.getFrame(), dx, dy, width, height, null);
 //		}else {
-		if (isRside) {
-			g2d.drawImage(move.getFrame(), dx, dy, width, height, null);
+		if (bomb.isStart) {
+			g2d.drawImage(bomb.getFrame(), dx, dy, width, height, null);
 		} else {
-			g2d.drawImage(move.getFrame(), dx + width, dy, -width, height, null);
+			if (isRside) {
+				g2d.drawImage(move.getFrame(), dx, dy, width, height, null);
+			} else {
+				g2d.drawImage(move.getFrame(), dx + width, dy, -width, height, null);
+			}
 		}
 //		}
 
@@ -136,13 +144,19 @@ public class Tank extends GameObject {
 	public int getPlayer() {
 		return player;
 	}
+
 	public int getCurHealth() {
 		return curHealth;
 	}
 
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+
 	private void shoot() {
 
-		isFire=true;
+		isFire = true;
+
 		if (gt.check()) {
 			if (isRside) {
 				om.addBullet(new Bullet((int) mapX + (width - 10), (int) mapY + (height / 12), Bullet.RIGHT, player));
@@ -151,9 +165,24 @@ public class Tank extends GameObject {
 			}
 			gt.start();
 		}
+		isFire = false;
 	}
 
 	private void updateHitBox() {
 		hitBox.setRect(mapX + 3, mapY + 2, width - 6, height - 4);
 	}
+
+	private void checkHitTank() {
+		if (om.checkHitTank(this)) {
+			this.curHealth -= 10;
+		}
+		if (curHealth <= 0) {
+			bomb.start();
+			if (bomb.isFinish) {
+				isDead = true;
+			}
+		}
+	}
+	
+	
 }

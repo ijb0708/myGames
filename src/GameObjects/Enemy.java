@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 import Managers.Animation;
+import Managers.GameTimer;
 
 public class Enemy extends GameObject{
 	
@@ -13,6 +14,8 @@ public class Enemy extends GameObject{
 	private double maxHealth;
 	
 	private Animation bomb;
+	
+	private GameTimer gt;
 	
 	public Enemy(int x, int y) {
 		super(x, y, ENEMY_SIZE, ENEMY_SIZE);
@@ -29,6 +32,9 @@ public class Enemy extends GameObject{
 		
 		bomb = new Animation(il.getBomb(), 100000000, true);
 	
+		gt = new GameTimer();
+		gt.setDelay(1500000000);
+		gt.start();
 	}
 	
 	public void draw(Graphics2D g2d) {
@@ -41,6 +47,22 @@ public class Enemy extends GameObject{
 
 	public void update() {
 		
+		if(isRside) {
+			notLeft();
+			right();
+			if(gt.check()) {
+				isRside=false;
+				gt.start();
+			}
+		}else {
+			notRight();
+			left();
+			if(gt.check()) {
+				isRside=true;
+				gt.start();
+			}
+		}
+		
 		checkHit();
 		
 		updateHitBox();
@@ -48,7 +70,7 @@ public class Enemy extends GameObject{
 		
 		updateMoving();
 		updateFalling();
-//		updateJumping();
+		updateJumping();
 
 		correctLocation();
 	}

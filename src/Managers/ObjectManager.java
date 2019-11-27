@@ -60,7 +60,7 @@ public class ObjectManager {
 		return null;
 	}
 
-	public synchronized void draw(Graphics2D g2d) {
+	public void draw(Graphics2D g2d) {
 		for (Enemy o : enemies) {
 			o.draw(g2d);
 		}

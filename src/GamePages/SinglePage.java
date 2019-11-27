@@ -1,5 +1,6 @@
 package GamePages;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
@@ -34,6 +35,12 @@ public class SinglePage extends PageAdapter{
 	@Override
 	public void draw(Graphics2D g2d) {
 		g2d.drawImage(back, 0, 0, GAME_WIDTH, GAME_HEIGHT, null);
+		g2d.setColor(Color.BLACK);
+		g2d.drawRect(10, 10, 300, 30);
+		if(om.getTank(1)!=null) {
+			g2d.setColor(Color.RED);
+			g2d.fillRect(10, 10,(int) (300 * ((double)om.getTank(1).getCurHealth() /(double) om.getTank(1).getMaxHealth())), 30);
+		}
 		om.draw(g2d);
 	}
 

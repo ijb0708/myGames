@@ -12,12 +12,12 @@ public class MainPage extends PageAdapter {
 	
 	private ImageLoader il = ImageLoader.getInstance();
 
-	private Font bigFont = new Font("±¼¸²", Font.BOLD, 35);
-	private Font smallFont = new Font("±¼¸²", Font.BOLD, 20);
+	private Font bigFont = new Font("±¼¸²", Font.BOLD, 50);
+	private Font smallFont = new Font("±¼¸²", Font.BOLD, 35);
 	
 	private int selecter=0;
 	private String[] name = new String[] {
-			"sIngle Play", "mUlti Play", "eXit"
+			"sIngle Play", "mUlti Play", "sCores","eXit"
 	};
 	
 	private GameManager gm;
@@ -33,16 +33,16 @@ public class MainPage extends PageAdapter {
 		
 		g2d.setColor(Color.GREEN);
 		g2d.setFont(bigFont);
-		g2d.drawString("tank GAme", 35, 50);
+		g2d.drawString("tank GAme", PageAdapter.GAME_WIDTH/3, 100);
 		g2d.setFont(smallFont);
 		
-		for (int i=0; i<3; i++) {
+		for (int i=0; i<4; i++) {
 			if(i == selecter) {
 				g2d.setColor(Color.RED);
 			}else {
 				g2d.setColor(Color.BLUE);
 			}
-			g2d.drawString(name[i], 45, 100+i*30);
+			g2d.drawString(name[i], PageAdapter.GAME_WIDTH/3 + 10, 200+i*50);
 		}
 	}
 
@@ -52,12 +52,12 @@ public class MainPage extends PageAdapter {
 		case KeyEvent.VK_UP:
 			selecter--;
 			if(selecter==-1) {
-				selecter=2;
+				selecter=3;
 			}
 			break;
 		case KeyEvent.VK_DOWN:
 			selecter++;
-			if(selecter==3) {
+			if(selecter==4) {
 				selecter=0;
 			}
 			break;
@@ -68,7 +68,9 @@ public class MainPage extends PageAdapter {
 			}else if(selecter==1) {
 				
 			}else if(selecter==2) {
-				System.exit(0);
+				gm.setPage(4);
+			}else if(selecter==3) {
+				System.exit(0);	
 			}
 			break;
 		}

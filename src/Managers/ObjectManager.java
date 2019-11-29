@@ -51,14 +51,32 @@ public class ObjectManager {
 
 	// 탱크를 사용하기위한 불러오기 함수
 	public Tank getTank(int p) {
-		for (int i = 0; i < tanks.size(); i++) {
-			if (tanks.get(i).getPlayer() == p) {
-				return tanks.get(i);
+		for (Tank t : tanks) {
+			if (t.getPlayer() == p) {
+				return t;
 			}
 		}
 		System.out.println("not tank");
 		return null;
 	}
+	
+	public boolean isTank(int p) {
+		for (Tank t : tanks) {
+			if (t.getPlayer() == p) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean isEnemy() {
+		
+		for (Enemy o : enemies) {
+				return true;
+		}
+		return false;
+	}
+
 
 	public void draw(Graphics2D g2d) {
 		for (Enemy o : enemies) {

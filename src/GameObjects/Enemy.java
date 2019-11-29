@@ -28,6 +28,7 @@ public class Enemy extends GameObject{
 		jumpSpeed = 0.2;
 		curFallSpeed = 0.2;
 
+		
 		hitBox = new Rectangle2D.Double(mapX, mapY, width, height);
 		
 		bomb = new Animation(il.getBomb(), 100000000, true);

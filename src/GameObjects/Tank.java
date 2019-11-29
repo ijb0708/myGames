@@ -119,9 +119,9 @@ public class Tank extends GameObject {
 		case KeyEvent.VK_Z:
 			jump();
 			break;
-		case KeyEvent.VK_X:
+		}
+		if(e.getKeyCode()==KeyEvent.VK_X) {
 			shoot();
-			break;
 		}
 	}
 
@@ -151,6 +151,11 @@ public class Tank extends GameObject {
 
 	public int getMaxHealth() {
 		return maxHealth;
+	}
+	
+	public void giveTankHealth() {
+		isDead=false;
+		curHealth=maxHealth;
 	}
 
 	private void shoot() {

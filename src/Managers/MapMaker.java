@@ -31,6 +31,22 @@ public class MapMaker {
 { T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
 	};
 
+	private T[][] Map1 = new T[][] {
+//  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24
+{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 1
+{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 2
+{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 3
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 4
+{ T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N }, // 10
+{ T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
+	};
+
 	private ArrayList<BasicFloor> floors = new ArrayList<BasicFloor>();
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Tank> tanks = new ArrayList<Tank>();
@@ -38,24 +54,11 @@ public class MapMaker {
 	public MapMaker(int select) {
 		if (select == 0) {
 			use = ExamMap;
+		} else if(select == 1) {
+			use = Map1;
 		} else {
 			System.out.println("맵이 없습니다.");
 		}
-
-	}
-
-	public void setMap(int select) {
-		if (select == 0) {
-			use = ExamMap;
-		} else {
-			System.out.println("맵이 없습니다.");
-		}
-	}
-
-	public void make() {
-		floors.clear();
-		enemies.clear();
-		tanks.clear();
 
 		for (int i = 0; i < MAP_HEIGHT; i++) {
 			for (int j = 0; j < MAP_WIDTH; j++) {
@@ -85,6 +88,18 @@ public class MapMaker {
 		}
 
 		return;
+
+	}
+
+	public void setMap(int select) {
+		if (select == 0) {
+			use = ExamMap;
+		} else {
+			System.out.println("맵이 없습니다.");
+		}
+	}
+
+	public void make() {
 	}
 
 	public ArrayList<BasicFloor> getFloors() {

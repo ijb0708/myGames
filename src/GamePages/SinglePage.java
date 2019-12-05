@@ -34,11 +34,12 @@ public class SinglePage extends PageAdapter{
 	@Override
 	public void init() {
 		
-		mm = new MapMaker(0);
+		mm = new MapMaker( (int) (Math.random()*5)+1);
 		
 		om.setEnemies(mm.getEnemies());
 		om.setFloors(mm.getFloors());
 		om.setTanks(mm.getTanks());
+		
 		isRun=true;
 	}
 

@@ -9,6 +9,7 @@ public class MainFrame extends JFrame{
 		
 		this.setSize(1200+16, 600+38);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
 		this.setVisible(true);
 	}
 }

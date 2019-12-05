@@ -33,20 +33,84 @@ public class MapMaker {
 
 	private T[][] Map1 = new T[][] {
 //  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 1
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 2
-{ T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 3
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 4
-{ T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 5
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 6
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 7
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N }, // 8
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N }, // 9
-{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N }, // 10
-{ T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 1
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 2
+{ T.S, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.S }, // 3
+{ T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S }, // 4
+{ T.S, T.N, T.N, T.N, T.N, T.E, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 5
+{ T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.S }, // 6
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 9
+{ T.S, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.S }, // 10
+{ T.S, T.N, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
 { T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
 	};
 
+
+	private T[][] Map2 = new T[][] {
+//  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 1
+{ T.S, T.N,T.T1, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.S }, // 2
+{ T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S }, // 3
+{ T.S, T.N, T.N, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.N, T.N, T.S }, // 4
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 5
+{ T.S, T.N, T.N, T.N, T.S, T.S, T.N, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.N, T.S, T.S, T.N, T.N, T.N, T.S }, // 6
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 9
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 10
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
+	};
+
+	private T[][] Map3 = new T[][] {
+//  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 1
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 2
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 3
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 4
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.E, T.N, T.S, T.S, T.S, T.N, T.N, T.S }, // 5
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.S }, // 6
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.S }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.N, T.N, T.N, T.S }, // 9
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 10
+{ T.S,T.T1, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.E, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 11
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
+	};
+
+	private T[][] Map4 = new T[][] {
+//  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 1
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 2
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.E, T.N, T.S }, // 3
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 4
+{ T.S, T.N,T.T1, T.N, T.N, T.N, T.E, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 5
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 6
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.S }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 9
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 10
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.S }, // 11
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
+	};
+
+	private T[][] Map5 = new T[][] {
+//  1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 1
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 2
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 3
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 4
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 5
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.S, T.S, T.N, T.N, T.N, T.S }, // 6
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 7
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S, T.N, T.N, T.N, T.N, T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.S }, // 8
+{ T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.N, T.N, T.E, T.N, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.S }, // 9
+{ T.S, T.N, T.N, T.N, T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.S, T.S, T.S, T.N, T.N, T.N, T.S }, // 10
+{ T.S,T.T1, T.S, T.N, T.S, T.S, T.N, T.N, T.N, T.N, T.N, T.N, T.N, T.E, T.N, T.E, T.N, T.N, T.N, T.E, T.N, T.N, T.N, T.S }, // 11
+{ T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S, T.S }, // 12
+	};
 	private ArrayList<BasicFloor> floors = new ArrayList<BasicFloor>();
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Tank> tanks = new ArrayList<Tank>();
@@ -56,7 +120,16 @@ public class MapMaker {
 			use = ExamMap;
 		} else if(select == 1) {
 			use = Map1;
-		} else {
+		} else if(select == 2) {
+			use = Map2;
+		} else if(select == 3) {
+			use = Map3;
+		} else if(select == 4) {
+			use = Map4;
+		} else if(select == 5) {
+			use = Map5;
+		} 
+		else {
 			System.out.println("맵이 없습니다.");
 		}
 

@@ -9,71 +9,71 @@ KEY_X = 120,
 KEY_Z = 122,
 KEY_C = 99;
 
-let GameCursorX=0, GameCursorY=0;
-
 /* 스틱들 */
 let sticks ={
 	L: [
 		[
-			[0,0,1,0], [0,0,1,0], [0,1,1,0], [0,0,0,0]
+			[false,false,true,false], [false,false,true,false], [false,true,true,false], [false,false,false,false]
 		],
 		[
-			[0,0,0,0], [0,1,0,0], [0,1,1,1], [0,0,0,0]
+			[false,false,false,false], [false,true,false,false], [false,true,true,true], [false,false,false,false]
 		],
 		[
-			[0,0,0,0], [0,1,1,0], [0,0,1,0], [0,0,1,0]
+			[false,false,false,false], [false,true,true,false], [false,false,true,false], [false,false,true,false]
 		],
 		[
-			[0,0,0,0], [1,1,1,0], [0,0,1,0], [0,0,0,0]
+			[false,false,false,false], [true,true,true,false], [false,false,true,false], [false,false,false,false]
 		]
 	],
 	I:[
 		[
-			[0,0,1,0], [0,0,1,0], [0,0,1,0], [0,0,1,0]
+			[false,false,true,false], [false,false,true,false], [false,false,true,false], [false,false,true,false]
 		],
 		[
-			[0,0,0,0], [0,0,0,0], [1,1,1,1], [0,0,0,0]
+			[false,false,false,false], [false,false,false,false], [true,true,true,true], [false,false,false,false]
 		],
 		[
-			[0,0,1,0], [0,0,1,0], [0,0,1,0], [0,0,1,0]
+			[false,false,true,false], [false,false,true,false], [false,false,true,false], [false,false,true,false]
 		],
 		[
-			[0,0,0,0], [1,1,1,1], [0,0,0,0], [0,0,0,0]
+			[false,false,false,false], [true,true,true,true], [false,false,false,false], [false,false,false,false]
 		]
 	],
 	O:[
 		[
-			[1,1], [1,1]
+			[true,true], [true,true]
 		],
 		[
-			[1,1], [1,1]
+			[true,true], [true,true]
 		],
 		[
-			[1,1], [1,1]
+			[true,true], [true,true]
 		],
 		[
-			[1,1], [1,1]
+			[true,true], [true,true]
 		]
 	],
 	T:[
 		[
-			[1,1,1], [0,1,0], [0,0,0]
+			[true,true,true], [false,true,false], [false,false,false]
 		],
 		[
-			[0,0,1], [0,1,1], [0,0,1]
+			[false,false,true], [false,true,true], [false,false,true]
 		],
 		[
-			[0,0,0], [0,1,0], [1,1,1]
+			[false,false,false], [false,true,false], [true,true,true]
 		],
 		[
-			[1,0,0], [1,1,0], [1,0,0]
+			[true,false,false], [true,true,false], [true,false,false]
 		]
 	]
 }
 
-
 /* 10 * 20 게임판 */
 let Board = create2DArray(20, 10, 'black');
+
+let GameCursorX=5, GameCursorY=0;
+let nowStick=createNewStick();
 
 onkeypress = function() {
 	console.log(event.keyCode);
@@ -102,29 +102,43 @@ onkeypress = function() {
 			break;
 	}
 
-	console.log(GameCursorX + ', ' + GameCursorY);
+	console.log(GameCursorX + ', ' + GameCursorY, createNewStick());
 };
 
 gameFrequencyLoop = setInterval( function() {
-	for (var i=0; i<Board.length; i++) {
-		for (var j=0; j<Board[i].length; j++) {
-			if (j==GameCursorX&&
-				i==GameCursorY) {
-				Board[i][j].style.backgroundColor='black';
-			}else {
-				Board[i][j].style.backgroundColor='blue';
-			}
+
+	var i, j;
+	var directionNum=0;
+
+	for (i=0; i<Board.length; i++) {
+		for (j=0; j<Board[0].length; j++) {
+			Board[i][j].style.backgroundColor='red';
 		}
 	}
+
+	for(i=0; i<nowStick[directionNum].length; i++) {
+		for (j=0; j<nowStick[directionNum][0].length; j++) {
+			if (nowStick[directionNum][i][j]) {
+				Board[i+GameCursorY][j+GameCursorX].style.backgroundColor='black';
+			}
+			console.log("Test");
+		}
+	} 
+			// if (j==GameCursorX&&
+			// 	i==GameCursorY) {
+			// 	Board[i][j].style.backgroundColor='black';
+			// }else {
+			// 	Board[i][j].style.backgroundColor='blue';
+			// }
 }, 100);
 
-stickFallingLoop = setInterval( function() {
-	if(GameCursorY>=20-1) {
+// stickFallingLoop = setInterval( function() {
+// 	if(GameCursorY>=20-1) {
 
-	}else {
-		GameCursorY+=1;
-	}
-}, 1000);
+// 	}else {
+// 		GameCursorY+=1;
+// 	}
+// }, 1000);
 
 function create2DArray(rows, columns) {
 	var matrix = new Array(rows);
@@ -144,6 +158,21 @@ function create2DArray(rows, columns) {
 	}
 
 	return matrix;
+}
+
+function createNewStick() {
+	var randomStickNum = Math.round(Math.random()*4);
+
+	if (randomStickNum==0) {
+		return sticks.L;
+	}else if(randomStickNum==1) {
+		return sticks.I;
+	}else if(randomStickNum==2) {
+		return sticks.O;
+	}else {
+		return sticks.T;
+	}
+	return;
 }
 
 // var makeButton = document.getElementById('makeButton');

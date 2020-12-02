@@ -1,0 +1,23 @@
+.testBox {
+	width : 100px;
+	height: 100px;
+	top:10px;
+	left:0px;
+	background-color: blue;
+}
+
+#GameBase {
+	width: 606px ; 		/* 3+ 30*10 +3 */
+	height: 806px ;		/* 3+ 40*20 +3 */
+	position: absolute;
+	border-color: black;
+	border-style: solid;
+	border-width: 3px;
+}
+
+.gameBlock{
+	width: 60px;
+	height: 40px;
+	position:absolute;
+	background-color: black;
+}
